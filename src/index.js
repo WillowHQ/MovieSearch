@@ -6,14 +6,16 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 
 //add a theming provider in
+//pass in initial state as a prop ?
+const movies = JSON.parse(localStorage.getItem("movies")) || []
 
-const WrapApp = () => (
+const WrapApp = (movies) => (
   <MuiThemeProvider>
-    <App />
+    <App movies={movies}/>
   </MuiThemeProvider>
 );
 
 ReactDOM.render(
-  <WrapApp />,
+  <WrapApp movies={movies}/>,
   document.getElementById('root')
 );
