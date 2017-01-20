@@ -1,8 +1,9 @@
 //MyTableRow.js
 import React, {Component} from 'react'
-import {TableRow, TableRowColumn} from 'material-ui/Table'
+import {Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColumn} from 'material-ui/Table'
 
-class MyTableRows extends Component{
+
+class MyTable extends Component{
 	render(){
 		const movies = this.props.data
 		const movieRows = movies.map((movie) => {
@@ -16,9 +17,21 @@ class MyTableRows extends Component{
 		})
 		return (
 			<div>
-				{movieRows}
+				<Table>
+				  	<TableHeader>
+			      		<TableRow>
+					        <TableHeaderColumn>TITLE</TableHeaderColumn>
+					        <TableHeaderColumn>ACTORS</TableHeaderColumn>
+					        <TableHeaderColumn>YEAR</TableHeaderColumn>
+				      	</TableRow>
+				    </TableHeader>
+					
+					<TableBody>
+						{movieRows}
+					</TableBody>
+				</Table>
 			</div>
 		)
 	}
 }
-export default MyTableRows
+export default MyTable
