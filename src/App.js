@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
 import MenuBarLayout from './MenuBarLayout'
-import MyTable from './MyTable'
+import AutoComplete from 'material-ui/AutoComplete'
 import TextInput from './TextInput'
+import MyTable from './MyTable'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
+
+const colors = [
+  'Red',
+  'Orange',
+  'Yellow',
+  'Green',
+  'Blue',
+  'Purple',
+  'Black',
+  'White',
+]
 
 class App extends Component {
   constructor(props) {
@@ -17,11 +29,23 @@ class App extends Component {
     
     this.state = {
       
-      movies: x || []
+      movies: x || [],
+      searchText: '',
+
     }
     console.log()
     
 
+  }
+  handleSearchUpdateInput = (searchText) => {
+    this.setState({
+      searchText: searchText,
+    })
+  }
+  handleNewRequest = () => {
+    this.setState({
+      searchText: '',
+    })
   }
   
   handleSubmitMovie = (movie) => {
@@ -52,10 +76,21 @@ class App extends Component {
 
         />
         <div className="SearchBar">
-          <p> Search Bar </p>
+           <AutoComplete
+            hintText="Type 'r', case insensitive"
+            searchText={this.state.searchText}
+            onUpdateInput={this.handleSearchUpdateInput}
+            onNewRequest={this.handleNewRequest}
+            dataSource={colors}
+            filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+            openOnFocus={true}
+          />
         </div>
         <div className="App-table">
-          <MyTable data={this.state.movies}/> 
+          <MyTable 
+            data={this.state.movies}
+            searchTerm={this.state.searchText}
+            /> 
         </div>
       </div>
     );

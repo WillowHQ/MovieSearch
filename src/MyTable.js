@@ -6,7 +6,11 @@ import {Table, TableHeader, TableHeaderColumn, TableBody, TableRow, TableRowColu
 class MyTable extends Component{
 	render(){
 		const movies = this.props.data
-		const movieRows = movies.map((movie) => {
+		//const searchTerm = "title"
+
+		const movieRows = movies
+		.filter((movie) => `${movie.title} ${movie.date} ${movie.actors}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+		.map((movie, index) => {
 			return (
 				<TableRow>
 					<TableRowColumn>{movie.title}</TableRowColumn>
