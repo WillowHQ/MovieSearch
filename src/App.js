@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 import MenuBarLayout from './MenuBarLayout'
 import AutoComplete from 'material-ui/AutoComplete'
 import TextInput from './TextInput'
@@ -81,7 +82,7 @@ class App extends Component {
             searchText={this.state.searchText}
             onUpdateInput={this.handleSearchUpdateInput}
             onNewRequest={this.handleNewRequest}
-            dataSource={colors}
+            dataSource={_.flatten(this.state.movies)}
             filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
             openOnFocus={true}
           />
