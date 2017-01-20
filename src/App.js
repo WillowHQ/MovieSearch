@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MenuBarLayout from './MenuBarLayout'
-import TableLayout from './TableLayout'
+import MyTable from './MyTable'
 import TextInput from './TextInput'
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -55,7 +55,7 @@ class App extends Component {
           <p> Search Bar </p>
         </div>
         <div className="App-table">
-          <TableLayout/>
+          <MyTable data={this.state.movies}/> 
         </div>
       </div>
     );
