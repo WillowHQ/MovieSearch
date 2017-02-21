@@ -10,7 +10,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 const contents = [
-  [{"title":"Home Ing","description":"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.","image":"http://dummyimage.com/350x198.png/5fa2dd/ffffff","id":"f507a871-f321-42ba-adae-89c8704ade4f"},
+[{"title":"Home Ing","description":"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.","image":"http://dummyimage.com/350x198.png/5fa2dd/ffffff","id":"f507a871-f321-42ba-adae-89c8704ade4f"},
 {"title":"Greenlam","description":"Phasellus id sapien in sapien iaculis congue.","image":"http://dummyimage.com/350x198.png/ff4444/ffffff","id":"5589171e-0e05-4dfc-ab34-bef0a37e4455"},
 {"title":"Ventosanzap","description":"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.","image":"http://dummyimage.com/350x198.png/ff4444/ffffff","id":"b04b72bd-7a76-4973-b65f-2ffb62919efd"},
 {"title":"Greenlam","description":"Morbi porttitor lorem id ligula.","image":"http://dummyimage.com/350x198.png/cc0000/ffffff","id":"d4cc35a4-d0d3-4dd3-ba14-fe6df4c6d9f4"},
