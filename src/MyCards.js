@@ -3,9 +3,11 @@ import React, {Component} from 'react'
 
 import MyCardLayout from './MyCardLayout'
 
-class MyCards extends Component{
+class MyCards extends Component{	
+
 	render(){
-		const sourceCards = this.props.sources
+		console.log(this.props.sources)
+		const sourceCards = this.props.sources.filter((source) => `${source.title}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase() ) >= 0)
 		.map((source, index) => {
 			return (
 				<MyCardLayout

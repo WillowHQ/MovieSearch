@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import MenuBarLayout from './MenuBarLayout'
-import TextInput from './TextInput'
+import SearchInput from './SearchInput'
 import MyCards from './MyCards'
 import './App.css'
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -37,7 +37,7 @@ class App extends Component {
     super(props) 
     this.state = {
       contents: contents[0], 
-      searchText: '',
+      searchTerm: '',
 
     }
   }
@@ -53,13 +53,14 @@ class App extends Component {
           <MenuBarLayout />
         </div>
         <TextInput
-          value="something"
-          onSubmitMovie={this.handleSubmitMovie}
+          value={this.state.searchText}
+          onSubmitSearch={this.handleSearchUpdateInput}
         />
         
         <div className="App-table">
           <MyCards
             sources={contents[0]}
+            searchTerm={this.state.searchTerm}
           /> 
         </div>
       </div>
