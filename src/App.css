@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif; 
+
 }
 
 .App-logo {
@@ -17,8 +21,43 @@
 .App-intro {
   font-size: large;
 }
+.My-cards-grid { 
+  display: flex;
+  
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Card-container {
+  color: #5995DA;
+  background-color: #fff;  
+  padding: 20px 0;
+  display: block;
+  justify-content: center;
+  width: 350px;
+  text-align: center;
+
+}
+.Card-title {
+  display: block;
+  text-align: left;
+  padding: 10px;
+}
+.Card-img-panel {
+  
+}
+.Card-description {
+  height: 2em;
+  overflow-y: auto;
+}
+h1 {
+  font-size: 18px;
+}
+p {
+  font-size: 12px;
 }

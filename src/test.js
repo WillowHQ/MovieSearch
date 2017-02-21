@@ -1,4 +1,0 @@
-localStorage.setItem("something", "darkside")
-
-
-

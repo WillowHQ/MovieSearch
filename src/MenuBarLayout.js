@@ -1,19 +1,9 @@
 import React from 'react'
-import AppBar from 'material-ui/AppBar'
-
-function handleTouchTap() {
-  alert('onTouchTap triggered on the title component');
-}
-
-const styles = {
-  title: {
-    cursor: 'pointer',
-  },
-}
+import {AppBar} from 'material-ui'
 
 const MenuBarLayout = () => (
-  <AppBar
-    title={<span style={styles.title}>Alan's Movie Manager</span>}
+  <div
+      title="content panel"
    
   />
 )
