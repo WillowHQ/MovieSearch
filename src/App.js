@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import MenuBarLayout from './MenuBarLayout'
-import SearchInput from './SearchInput'
+
 import MyCards from './MyCards'
+import { AutoComplete } from 'material-ui'
+import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
 import './App.css'
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from 'react-tap-event-plugin'
+
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
+injectTapEventPlugin()
 
 const contents = [
 [{"title":"Home Ing","description":"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.","image":"http://dummyimage.com/350x198.png/5fa2dd/ffffff","id":"f507a871-f321-42ba-adae-89c8704ade4f"},
@@ -32,18 +35,19 @@ const contents = [
 {"title":"Tempsoft","description":"Cras pellentesque volutpat dui.","image":"http://dummyimage.com/350x198.png/ff4444/ffffff","id":"33373f73-f0ad-44e5-a38e-c85b414b131a"}]
 ]
 
+
 class App extends Component {
   constructor(props) {
     super(props) 
     this.state = {
       contents: contents[0], 
-      searchTerm: '',
-
+      searchTerm: ''
+    
     }
   }
-  handleSearchUpdateInput = (searchText) => {
+  handleSearchUpdateInput = (e) => {
     this.setState({
-      searchText: searchText,
+      searchTerm: e.target.value,
     })
   }
   render() {
@@ -52,10 +56,21 @@ class App extends Component {
         <div className="App-header">
           <MenuBarLayout />
         </div>
-        <TextInput
-          value={this.state.searchText}
-          onSubmitSearch={this.handleSearchUpdateInput}
-        />
+        <div className='SearchBar'>
+          <form>
+            <FormGroup
+              controlId='formBasicText'
+            >
+              <FormControl
+                type='text'
+                value={this.state.searchTerm}
+                placeholder="Search"
+                onChange={this.handleSearchUpdateInput}
+                bsSize='large'
+              />
+            </FormGroup>  
+          </form>
+        </div>
         
         <div className="App-table">
           <MyCards

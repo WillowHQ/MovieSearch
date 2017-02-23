@@ -3,9 +3,9 @@ import {AppBar} from 'material-ui'
 
 const MenuBarLayout = () => (
   <div
-      title="content panel"
-   
+    title='content panel'
+
   />
 )
 
-export default MenuBarLayout;
+export default MenuBarLayout
