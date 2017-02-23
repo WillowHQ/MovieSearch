@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import MenuBarLayout from './MenuBarLayout'
 
 import MyCards from './MyCards'
-import { AutoComplete } from 'material-ui'
-import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap'
+import { AppBar, IconButton , TextField} from 'material-ui'
+import FileUpload from 'material-ui/svg-icons/file/file-upload'
+
 import './App.css'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 
@@ -41,7 +41,8 @@ class App extends Component {
     super(props) 
     this.state = {
       contents: contents[0], 
-      searchTerm: ''
+      searchTerm: '', 
+      openUploadPanel: false
     
     }
   }
@@ -50,27 +51,49 @@ class App extends Component {
       searchTerm: e.target.value,
     })
   }
+  handleUploadCLick = () => {
+   console.log("this is being called")
+    this.setState({
+      openUploadPanel:  ! this.state.openUploadPanel
+    })
+  }
   render() {
+  
     return (
       <div className="App">
-        <div className="App-header">
-          <MenuBarLayout />
+        <div>
+          <AppBar
+            iconElementLeft={
+              <div className='SearchBar'>
+                <TextField
+                  type='text'
+                  value={this.state.searchTerm}
+                  hintText="Search"
+                  onChange={this.handleSearchUpdateInput}
+                />
+              </div>
+            }
+               
+            iconElementRight={
+              <IconButton onTouchTap={this.handleUploadCLick}>
+                <FileUpload/>
+              </IconButton>
+            }
+           
+
+          />
         </div>
-        <div className='SearchBar'>
-          <form>
-            <FormGroup
-              controlId='formBasicText'
-            >
-              <FormControl
-                type='text'
-                value={this.state.searchTerm}
-                placeholder="Search"
-                onChange={this.handleSearchUpdateInput}
-                bsSize='large'
-              />
-            </FormGroup>  
-          </form>
+        {this.state.openUploadPanel ?
+        <div className="uploadPanel">
+          <p> this works </p>
         </div>
+        : 
+        <div> 
+            <p> state is false now </p>
+        </div>
+        
+        }
+       
         
         <div className="App-table">
           <MyCards

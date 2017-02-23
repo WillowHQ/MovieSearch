@@ -11,6 +11,7 @@ class MyCards extends Component {
 		.map((source, index) => {
   return (
     <MyCardLayout
+      key={index}
       {...source}
 				/>
   )
