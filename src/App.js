@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 
 import MyCards from './MyCards'
-import { AppBar, IconButton , TextField} from 'material-ui'
+import { AppBar, IconButton , TextField, Divider} from 'material-ui'
+import FileInput from 'react-file-input'
 import FileUpload from 'material-ui/svg-icons/file/file-upload'
+import Backup from 'material-ui/svg-icons/action/backup'
 
 import './App.css'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -42,7 +44,9 @@ class App extends Component {
     this.state = {
       contents: contents[0], 
       searchTerm: '', 
-      openUploadPanel: false
+      openUploadPanel: false, 
+      url: '',
+      
     
     }
   }
@@ -52,11 +56,32 @@ class App extends Component {
     })
   }
   handleUploadCLick = () => {
-   console.log("this is being called")
+   
     this.setState({
       openUploadPanel:  ! this.state.openUploadPanel
     })
   }
+  handleUrlChange = (e) => {
+    this.setState({
+      fileName: '',
+      url: e.target.value,
+    })
+  }
+  handleFileUpdate = (e) => {
+    this.setState({
+      url: '',
+      fileName: e.target.value
+    })
+  }
+  handleMediaSubmit = () => {
+    this.state.url ? alert(`url has been submitted ${this.state.url}`)
+      :
+      this.state.fileName ? alert(`file has been submitted ${this.state.fileName}`)
+      :
+      alert(`something went wrong`)
+
+  }
+ 
   render() {
   
     return (
@@ -74,9 +99,13 @@ class App extends Component {
               </div>
             }
                
-            iconElementRight={
-              <IconButton onTouchTap={this.handleUploadCLick}>
-                <FileUpload/>
+            iconElementRight={this.state.openUploadPanel ? <div></div> :
+              <IconButton 
+                onTouchTap={this.handleUploadCLick}
+              >
+                <FileUpload
+                 
+                />
               </IconButton>
             }
            
@@ -85,15 +114,31 @@ class App extends Component {
         </div>
         {this.state.openUploadPanel ?
         <div className="uploadPanel">
-          <p> this works </p>
+          <TextField
+            id="url-text-field"
+            value= {this.state.url}
+            onChange={this.handleUrlChange}
+          />
+          <FileInput
+            name="myImage"
+            accept=".png,.gif"
+            placeholder="My Image"
+            className="inputClass"
+            onChange={this.handleFileUpdate}
+          />
+          <IconButton 
+            onTouchTap={this.handleMediaSubmit}
+          >
+            <Backup/>
+          </IconButton>
         </div>
         : 
         <div> 
-            <p> state is false now </p>
+          
         </div>
         
         }
-       
+       <Divider/>
         
         <div className="App-table">
           <MyCards
